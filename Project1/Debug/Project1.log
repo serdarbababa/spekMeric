@@ -1,0 +1,20 @@
+﻿Build started 1/21/2017 17:47:31.
+     1>Project "C:\Users\DELLWS1\OneDrive\teza\code\ProjectNet\Project1\Project1.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /MP /Od /Oy- /D _CRT_SECURE_NO_WARNINGS /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         Main.cpp
+     1>c:\users\dellws1\onedrive\teza\code\projectnet\project1\main.cpp(163): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\dellws1\onedrive\teza\code\projectnet\project1\main.cpp(257): warning C4101: 'val' : unreferenced local variable
+     1>c:\users\dellws1\onedrive\teza\code\projectnet\project1\main.cpp(299): warning C4244: 'initializing' : conversion from 'double' to 'float', possible loss of data
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\DELLWS1\OneDrive\teza\code\ProjectNet\Debug\Project1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\DELLWS1\OneDrive\teza\code\ProjectNet\Debug\Project1.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\DELLWS1\OneDrive\teza\code\ProjectNet\Debug\Project1.lib" /MACHINE:X86 Debug\agac.obj
+         Debug\dugum.obj
+         Debug\Main.obj
+         Debug\Utility.obj
+         Debug\Wave.obj
+         Project1.vcxproj -> C:\Users\DELLWS1\OneDrive\teza\code\ProjectNet\Debug\Project1.exe
+     1>Done Building Project "C:\Users\DELLWS1\OneDrive\teza\code\ProjectNet\Project1\Project1.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.54
