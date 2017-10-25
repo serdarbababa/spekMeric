@@ -15,7 +15,8 @@
 #include <vector>
 #include <time.h> 
 
-#include "Wave.h"
+
+
 
 using namespace std;
 

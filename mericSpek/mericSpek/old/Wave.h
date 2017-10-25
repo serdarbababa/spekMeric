@@ -1,5 +1,5 @@
 #pragma once
-#include "Utility.h"
+
 #include <math.h>
 #include <stdio.h>
 /*#include <tchar.h>

@@ -1,99 +1,34 @@
 #include "agac.h"
 
 
-agac::agac()
-{
-	//this->derinlik = derin;
+agac::agac(){
 	root=NULL;
-	neighbour=20;
+    neighbour=5;
 }
 
-
-agac::~agac(void)
-{
+agac::~agac(void){
 }
 
-void agac::agacYarat(){	
+void agac::agacYarat(){
 	root = NULL;
-	neighbour=20;
-	//create layers
-	/*layers = *(new vector<vector <dugum *>>);
-
-	for (int i = 0 ; i < this->derinlik;i++){
-	vector < dugum *> katman1;
-	katman1= *(new vector<dugum* >);
-	layers->push_back(katman1);
-	}*/
+    neighbour=5;
 }
 
 void agac::dalEkle(data_tipi * veriler, int derinligi){
-
-	if(root==NULL){		
+	if(root==NULL){
 		root = new dugum(-9999);
 	}	
 	dugumEkle(veriler, derinligi,this->root);
-
-	//int prevInserted = -1;
-	//for(int i=0; i < derinlik;i++){
-	//	dugum * n = new dugum();
-	//	n->deger = veriler[i];
-	//	if(prevInserted ==-1)
-	//		n->parent = NULL;
-	//	else
-	//		n->parent= prevInserted;
-	//	n->children= NULL;
-	//	bool inserted = false;
-	//	
-	//	if(katman->at(i).size() ==0){
-	//		katman->at(i).push_back(n);		
-	//	}
-	//	else (katman->at(i).size() >0){		
-	//		for (int j = 0; j < katman->at(i).size(); j++){
-	//			if (katman->at(i).at(j)->deger > n->deger)	{
-	//				{
-	//					katman->insert(katman->begin() + j, n); //->insert(it + i, n);
-	//					inserted = true;
-	//					break;
-	//				}
-	//			}
-	//		}
-	//	}
-	//	
-	//		
-
-	//}
 }
 
 void agac::dugumEkle(data_tipi *veriler, int derinlik, dugum *nod){
 	
-	bool willBeInserted = true;
-	int insertedChildIndex = -1;
-	//cocugu var ise
-	if (nod->children->size() >0){		
-		//cocugu ekleyecek yeri belirle
-		for (int j = 0; j < nod->children->size(); j++){
-			if (nod->children->at(j)->deger == veriler[0]){
-				insertedChildIndex = j;
-				willBeInserted=false;
-			}
-			else if (nod->children->at(j)->deger > veriler[0]){
-				
-				dugum * n = new dugum(veriler[0]);				
-				nod->children->insert( nod->children->begin() + j,n ); //->insert(it + i, n);
-				n->parent = nod;				
-				insertedChildIndex =j;
-				break;
-
-			}
-		}
-	}
-	if(insertedChildIndex < 0 && willBeInserted){
-		nod->addChild(veriler[0]);
-		insertedChildIndex = nod->children->size()-1;
-	}
+	
 	//cout << insertedChildIndex << endl;
-	if(derinlik ==1)
-		return;
+    if(derinlik ==1){
+        nod->children[insertedChildIndex].visited();
+        return;
+    }
 	else
 		dugumEkle(veriler+1,derinlik-1,nod->children->at(insertedChildIndex));
 }
@@ -125,7 +60,7 @@ void agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
 	}
 	if(insertedChildIndex < 0 && willBeInserted){
 		nod->addChild(veriler[0]);
-		insertedChildIndex = nod->children->size()-1;
+		insertedChildIndex = (int)nod->children->size()-1;
 	}
 	//cout << insertedChildIndex << endl;
 	if(derinlik ==1)
@@ -151,7 +86,8 @@ void agac::Preorder(dugum* nod)
 {
 	if (nod)
 	{
-		cout << nod->deger << " ";
+		cout << nod->toString() << endl;
+        
 		for (int i = 0; i < nod->children->size(); i++)
 			Preorder(nod->children->at(i));
 		if (nod->children->size()==0)
@@ -248,6 +184,8 @@ void agac::open(){
 
 	fclose(fp);
 }
+
+/*
 //void open(){
 //	if(root==NULL){		
 //		root = new dugum(-9999);
@@ -263,7 +201,8 @@ void agac::open(){
 //
 //	fclose(fp);
 //}
-
+*/
+ 
 void agac::deSerialize(dugum *&nod, FILE *fp)
 {
     // Read next item from file. If theere are no more items or next

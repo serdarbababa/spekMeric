@@ -20,17 +20,19 @@ int main(){
 
 void testTree(){
     agac *a = new agac();
-    int depth = 16;
+    int depth = 5;
     data_tipi  *veri= new int[depth];// {5,4,7,1,3};
     
-    for (int j = 0 ; j < 10;j++){
-        for (int i = 0 ; i < depth;i++){
-            veri[i]=(int)(rand())%255;
-            printf("%d\t",veri[i]);
-        }
+    for (int j = 0 ; j < 5;j++){
+        if(j!=1)
+            for (int i = 0 ; i < depth;i++){
+                veri[i]=(int)(rand())%255;
+                printf("%d\t",veri[i]);
+            }
         a->dalEkle(veri,depth);
         printf("\n");
     }
+    cout << endl;
     a->Preorder();
 }
 
