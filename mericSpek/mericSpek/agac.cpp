@@ -22,17 +22,16 @@ void agac::dalEkle(data_tipi * veriler, int derinligi){
 }
 
 void agac::dugumEkle(data_tipi *veriler, int derinlik, dugum *nod){
-	
-	
+    int insertedChildIndex = nod->addChild(veriler[0], 1);
 	//cout << insertedChildIndex << endl;
     if(derinlik ==1){
-        nod->children[insertedChildIndex].visited();
+        nod->getChildAt(insertedChildIndex)->visited();
         return;
     }
 	else
-		dugumEkle(veriler+1,derinlik-1,nod->children->at(insertedChildIndex));
+		dugumEkle(veriler+1,derinlik-1,nod->getChildAt(insertedChildIndex));
 }
-
+/*
 void agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
 	
 	bool willBeInserted = true;
@@ -68,16 +67,16 @@ void agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
 	else
 		dugumEkleFarkli(veriler+1,derinlik-1,nod->children->at(insertedChildIndex));
 }
-
+*/
 
 void agac::Postorder(dugum * nod)
 {
 	if (nod != NULL)
 	{
-		for (int i = 0; i < nod->children->size(); i++)
-			Postorder(nod->children->at(i));
+		for (int i = 0; i < nod->getChildrenCount(); i++)
+			Postorder(nod->getChildAt(i));
 
-		cout << nod->deger << endl;
+		cout << nod->getDeger() << endl;
 
 	}
 }
@@ -88,9 +87,9 @@ void agac::Preorder(dugum* nod)
 	{
 		cout << nod->toString() << endl;
         
-		for (int i = 0; i < nod->children->size(); i++)
-			Preorder(nod->children->at(i));
-		if (nod->children->size()==0)
+		for (int i = 0; i < nod->getChildrenCount(); i++)
+			Preorder(nod->getChildAt(i));
+		if (nod->getChildrenCount()==0)
 			cout << endl;
 
 	}
@@ -102,16 +101,16 @@ void agac::Preorder1(dugum* nod)
 {
 	if (nod)
 	{
-		cout << nod->deger << " ";
+		cout << nod->getDeger() << " ";
 		int count = 0 ;
-		dugum *tempN = nod->parent;
+		dugum *tempN = nod->getParent();
 		while( tempN){
 			count++;
-			tempN=tempN->parent;
+			tempN=tempN->getParent();
 		}
 		cout <<"seviye " << count << endl;
-		for (int i = 0; i < nod->children->size(); i++)
-			Preorder(nod->children->at(i));
+		for (int i = 0; i < nod->getChildrenCount(); i++)
+			Preorder(nod->getChildAt(i));
 
 	}
 }
@@ -140,17 +139,17 @@ void agac::save(){
 
 void agac::serialize(dugum* nod, FILE *fp){
 	// If current node is NULL, store marker
-	if (nod->children->size() == 0 )
+	if (nod->getChildrenCount() == 0 )
     {
-		fprintf(fp, "%d ", nod->deger);
+		fprintf(fp, "%d ", nod->getDeger());
         fprintf(fp, "\n%c ", MARKER);
         return;
     }
  
     // Else, store current node and recur for its children
-	fprintf(fp, "%d ", nod->deger);
-	for (int i = 0; i < nod->children->size(); i++)
-		serialize(nod->children->at(i),fp);
+	fprintf(fp, "%d ", nod->getDeger());
+	for (int i = 0; i < nod->getChildrenCount(); i++)
+		serialize(nod->getChildAt(i),fp);
 	//if (nod->children->size()==0)
 	//		cout << endl;
     fprintf(fp, "%c ", MARKER);

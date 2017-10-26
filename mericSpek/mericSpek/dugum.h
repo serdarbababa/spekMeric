@@ -26,9 +26,12 @@ public:
     dugum(data_tipi deger);
     ~dugum();
     
+    data_tipi getDeger();
+    dugum * getParent();
     int addChild(data_tipi, int option);
     void visited();
     int getChildrenCount();
+    dugum * getChildAt(int index);
     char * toString();
 };
 

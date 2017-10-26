@@ -23,10 +23,10 @@ void testTree(){
     int depth = 5;
     data_tipi  *veri= new int[depth];// {5,4,7,1,3};
     
-    for (int j = 0 ; j < 5;j++){
+    for (int j = 0 ; j < 100;j++){
         if(j!=1)
             for (int i = 0 ; i < depth;i++){
-                veri[i]=(int)(rand())%255;
+                veri[i]=(int)(rand())%16;
                 printf("%d\t",veri[i]);
             }
         a->dalEkle(veri,depth);

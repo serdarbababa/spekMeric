@@ -25,48 +25,62 @@ dugum::~dugum()
 {
 }
 
+data_tipi dugum::getDeger(){
+    return deger;
+}
+
+dugum * dugum::getParent(){
+    return parent;
+}
+
+dugum * dugum::getChildAt(int index){
+    return children->at(index);
+}
+
+void dugum::visited(){
+    uzerindenGecme++;
+}
 int dugum::addChild(data_tipi data, int option){
     bool willBeInserted = true;
-    int insertedChildIndex = -1;
+    int insertedChildIndex = 0;
     
     if(option ==1){
         
         //cocugu var ise
         if (children->size() >0){
             //cocugu ekleyecek yeri belirle
-            for (int j = 0; j < nod->children->size(); j++){
+            for (int j = 0; j < children->size(); j++){
                 if (children->at(j)->deger == data){
                     insertedChildIndex = j;
                     willBeInserted=false;
+                    break;
                 }
                 else if (children->at(j)->deger > data){
-                    
-                    dugum * n = new dugum(data);
-                    children->insert( nod->children->begin() + j,n ); //->insert(it + i, n);
-                    n->parent = nod;
                     insertedChildIndex =j;
                     break;
-                    
                 }
+                else
+                    insertedChildIndex++;
             }
         }
-        if(insertedChildIndex < 0 && willBeInserted){
-            nod->addChild(veriler[0]);
-            insertedChildIndex = (int) nod->children->size()-1;
+        else{
+            willBeInserted=true;
+            insertedChildIndex=0;
         }
+        
     }
     else if(option ==2){
         
     }
+    if(willBeInserted){
+        dugum * n = new dugum(data);
+        n->parent = this;
+        n->children= new vector<dugum *>;
+        n->depth= this->depth+1;
     
+        this->children->insert(children->begin()+insertedChildIndex, n);
+    }
     this->uzerindenGecme++;
-    dugum * n = new dugum(data);
-	n->parent = this;						
-	n->children= new vector<dugum *>;
-    n->depth= this->depth+1;
-    
-	this->children->push_back(n);
-    
     return insertedChildIndex;
 }
 
@@ -78,6 +92,7 @@ char * dugum::toString(){
     char * cikti = new char[100];
     for(int i = 0 ; i < depth; i++)
         sprintf(cikti,"%s\t",cikti);
-    sprintf(cikti,"%snode (%d) %d %d",cikti, id,deger,uzerindenGecme);
+    //sprintf(cikti,"%snode (%d) %d %d",cikti, id,deger,uzerindenGecme);
+    sprintf(cikti,"%s%d (%d)",cikti,deger,uzerindenGecme);
     return cikti;
 }
