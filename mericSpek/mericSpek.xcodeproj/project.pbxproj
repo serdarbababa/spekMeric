@@ -26,6 +26,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D6667A411FA1A70200C5D105 /* Haberlesme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Haberlesme.h; sourceTree = "<group>"; };
 		D6B492271F9D000A00A8314D /* mericSpek */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mericSpek; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B4922A1F9D000A00A8314D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D6B492311F9DD03B00A8314D /* agac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = agac.h; sourceTree = "<group>"; };
@@ -66,6 +67,7 @@
 		D6B492291F9D000A00A8314D /* mericSpek */ = {
 			isa = PBXGroup;
 			children = (
+				D6667A411FA1A70200C5D105 /* Haberlesme.h */,
 				D6B492331F9DD03B00A8314D /* agac.cpp */,
 				D6B492311F9DD03B00A8314D /* agac.h */,
 				D6B492351F9DD03B00A8314D /* dugum.cpp */,

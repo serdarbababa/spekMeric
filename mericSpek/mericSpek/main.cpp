@@ -3,7 +3,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
-
+#include "Haberlesme.h"
 using namespace std;
 
 
@@ -14,7 +14,10 @@ using namespace std;
 void testTree();
 
 int main(){
-    testTree();
+    //testTree();
+    Haberlesme *h = new Haberlesme();
+    //h->test();
+    h->haberles();
     return 0;
 }
 
