@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		D6667A431FA4621000C5D105 /* Haberlesme.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6667A421FA4621000C5D105 /* Haberlesme.cpp */; };
-		D6667A461FA46B4500C5D105 /* bellek.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6667A441FA46B4500C5D105 /* bellek.cpp */; };
+		D676DBDC1FA47248002EE643 /* Agac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D676DBDB1FA47247002EE643 /* Agac.cpp */; };
+		D676DBDF1FA4724E002EE643 /* Bellek.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D676DBDE1FA4724D002EE643 /* Bellek.cpp */; };
+		D676DBE41FA4740E002EE643 /* Dugum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D676DBE31FA4740E002EE643 /* Dugum.cpp */; };
 		D6B4922B1F9D000A00A8314D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B4922A1F9D000A00A8314D /* main.cpp */; };
-		D6B4923A1F9DD03B00A8314D /* agac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B492331F9DD03B00A8314D /* agac.cpp */; };
-		D6B4923B1F9DD03B00A8314D /* dugum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B492351F9DD03B00A8314D /* dugum.cpp */; };
 		D6B4923C1F9DD03B00A8314D /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B492381F9DD03B00A8314D /* Utility.cpp */; };
 /* End PBXBuildFile section */
 
@@ -30,15 +30,16 @@
 /* Begin PBXFileReference section */
 		D6667A411FA1A70200C5D105 /* Haberlesme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Haberlesme.h; sourceTree = "<group>"; };
 		D6667A421FA4621000C5D105 /* Haberlesme.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Haberlesme.cpp; sourceTree = "<group>"; };
-		D6667A441FA46B4500C5D105 /* bellek.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bellek.cpp; sourceTree = "<group>"; };
-		D6667A451FA46B4500C5D105 /* bellek.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = bellek.hpp; sourceTree = "<group>"; };
+		D676DBD91FA47231002EE643 /* Bellek.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = Bellek.hpp; path = /Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Bellek.hpp; sourceTree = "<absolute>"; };
+		D676DBDB1FA47247002EE643 /* Agac.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Agac.cpp; path = /Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Agac.cpp; sourceTree = "<absolute>"; };
+		D676DBDD1FA4724B002EE643 /* Agac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Agac.h; path = /Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Agac.h; sourceTree = "<absolute>"; };
+		D676DBDE1FA4724D002EE643 /* Bellek.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = Bellek.cpp; path = /Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Bellek.cpp; sourceTree = "<absolute>"; };
+		D676DBE11FA47351002EE643 /* Agac.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Agac.h; path = /Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Agac.h; sourceTree = "<absolute>"; };
+		D676DBE21FA4740D002EE643 /* Dugum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dugum.h; sourceTree = "<group>"; };
+		D676DBE31FA4740E002EE643 /* Dugum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Dugum.cpp; sourceTree = "<group>"; };
 		D6B492271F9D000A00A8314D /* mericSpek */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = mericSpek; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6B4922A1F9D000A00A8314D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D6B492311F9DD03B00A8314D /* agac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = agac.h; sourceTree = "<group>"; };
-		D6B492331F9DD03B00A8314D /* agac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = agac.cpp; sourceTree = "<group>"; };
 		D6B492341F9DD03B00A8314D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
-		D6B492351F9DD03B00A8314D /* dugum.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dugum.cpp; sourceTree = "<group>"; };
-		D6B492361F9DD03B00A8314D /* dugum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dugum.h; sourceTree = "<group>"; };
 		D6B492381F9DD03B00A8314D /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utility.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,17 +73,18 @@
 		D6B492291F9D000A00A8314D /* mericSpek */ = {
 			isa = PBXGroup;
 			children = (
+				D676DBE31FA4740E002EE643 /* Dugum.cpp */,
+				D676DBE21FA4740D002EE643 /* Dugum.h */,
+				D676DBDB1FA47247002EE643 /* Agac.cpp */,
+				D676DBE11FA47351002EE643 /* Agac.h */,
+				D676DBDE1FA4724D002EE643 /* Bellek.cpp */,
+				D676DBDD1FA4724B002EE643 /* Agac.h */,
+				D676DBD91FA47231002EE643 /* Bellek.hpp */,
 				D6667A411FA1A70200C5D105 /* Haberlesme.h */,
 				D6667A421FA4621000C5D105 /* Haberlesme.cpp */,
-				D6B492331F9DD03B00A8314D /* agac.cpp */,
-				D6B492311F9DD03B00A8314D /* agac.h */,
-				D6B492351F9DD03B00A8314D /* dugum.cpp */,
-				D6B492361F9DD03B00A8314D /* dugum.h */,
 				D6B492381F9DD03B00A8314D /* Utility.cpp */,
 				D6B492341F9DD03B00A8314D /* Utility.h */,
 				D6B4922A1F9D000A00A8314D /* main.cpp */,
-				D6667A441FA46B4500C5D105 /* bellek.cpp */,
-				D6667A451FA46B4500C5D105 /* bellek.hpp */,
 			);
 			path = mericSpek;
 			sourceTree = "<group>";
@@ -144,11 +146,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6B4923B1F9DD03B00A8314D /* dugum.cpp in Sources */,
 				D6B4923C1F9DD03B00A8314D /* Utility.cpp in Sources */,
+				D676DBDC1FA47248002EE643 /* Agac.cpp in Sources */,
+				D676DBE41FA4740E002EE643 /* Dugum.cpp in Sources */,
+				D676DBDF1FA4724E002EE643 /* Bellek.cpp in Sources */,
 				D6B4922B1F9D000A00A8314D /* main.cpp in Sources */,
-				D6B4923A1F9DD03B00A8314D /* agac.cpp in Sources */,
-				D6667A461FA46B4500C5D105 /* bellek.cpp in Sources */,
 				D6667A431FA4621000C5D105 /* Haberlesme.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

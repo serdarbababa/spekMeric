@@ -10,13 +10,13 @@
 #define Bellek_hpp
 
 #include <stdio.h>
-#include "agac.h"
+#include "Agac.h"
 #include "Utility.h"
 
 class Bellek{
 private:
     //hold in memory
-    agac *a;
+    Agac *a;
     int depth;
 public:
     Bellek(int depth);

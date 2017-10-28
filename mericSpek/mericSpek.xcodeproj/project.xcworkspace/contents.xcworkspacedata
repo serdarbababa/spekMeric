@@ -2,6 +2,18 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:mericSpek.xcodeproj">
+      location = "group:/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Agac.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Agac.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Bellek.cpp">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/Bellek.hpp">
+   </FileRef>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>

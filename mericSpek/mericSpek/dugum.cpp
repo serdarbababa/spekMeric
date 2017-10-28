@@ -1,46 +1,46 @@
-#include "dugum.h"
+#include "Dugum.h"
 
-int dugum::idCount=0;
+int Dugum::idCount=0;
 
-dugum::dugum( )
+Dugum::Dugum( )
 {
 	this->parent=NULL;
-	this->children=new vector<dugum *>;
+	this->children=new vector<Dugum *>;
 	uzerindenGecme=0;
     this->id=idCount++;
     depth=0;
 }
-dugum::dugum(int deger)
+Dugum::Dugum(int deger)
 {
 	this->deger = deger;
 	this->parent=NULL;
-	this->children=new vector<dugum *>;
+	this->children=new vector<Dugum *>;
     this->id=idCount++;
 	uzerindenGecme=0;
     depth=0;
 }
 
 
-dugum::~dugum()
+Dugum::~Dugum()
 {
 }
 
-data_tipi dugum::getDeger(){
+data_tipi Dugum::getDeger(){
     return deger;
 }
 
-dugum * dugum::getParent(){
+Dugum * Dugum::getParent(){
     return parent;
 }
 
-dugum * dugum::getChildAt(int index){
+Dugum * Dugum::getChildAt(int index){
     return children->at(index);
 }
 
-void dugum::visited(){
+void Dugum::visited(){
     uzerindenGecme++;
 }
-int dugum::addChild(data_tipi data, int option){
+int Dugum::addChild(data_tipi data, int option){
     bool willBeInserted = true;
     int insertedChildIndex = 0;
     
@@ -73,9 +73,9 @@ int dugum::addChild(data_tipi data, int option){
         
     }
     if(willBeInserted){
-        dugum * n = new dugum(data);
+        Dugum * n = new Dugum(data);
         n->parent = this;
-        n->children= new vector<dugum *>;
+        n->children= new vector<Dugum *>;
         n->depth= this->depth+1;
     
         this->children->insert(children->begin()+insertedChildIndex, n);
@@ -84,11 +84,11 @@ int dugum::addChild(data_tipi data, int option){
     return insertedChildIndex;
 }
 
-int dugum::getChildrenCount(){
+int Dugum::getChildrenCount(){
     return (int)children->size();
 }
 
-char * dugum::toString(){
+char * Dugum::toString(){
     char * cikti = new char[100];
     for(int i = 0 ; i < depth; i++)
         sprintf(cikti,"%s\t",cikti);

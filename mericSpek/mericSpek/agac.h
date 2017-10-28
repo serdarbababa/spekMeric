@@ -1,20 +1,20 @@
 #pragma once
-#include "dugum.h"
+#include "Dugum.h"
 #include <iostream>
 #define MARKER '#'
 
 using namespace std;
 
-class agac
+class Agac
 {
 public:
-	agac(void );
-	~agac(void);
+	Agac(void );
+	~Agac(void);
     
 	void agacYarat();
 	void dalEkle(data_tipi * veriler, int derinlik );
-	void dugumEkle(data_tipi *deger,int derinlik, dugum * nod);
-	void dugumEkleFarkli(data_tipi *deger,int derinlik, dugum * nod);
+	void dugumEkle(data_tipi *deger,int derinlik, Dugum * nod);
+	void dugumEkleFarkli(data_tipi *deger,int derinlik, Dugum * nod);
 	
     //gosterim
     
@@ -24,14 +24,14 @@ public:
     //tree saving ops
 	void save();
 	void open();
-	void serialize(dugum* nod, FILE *fp);
-	void deSerialize(dugum *&nod, FILE *fp);
+	void serialize(Dugum* nod, FILE *fp);
+	void deSerialize(Dugum *&nod, FILE *fp);
 
 private:
-	dugum * root;
+	Dugum * root;
     int neighbour ;
-    void Postorder(dugum * nod);
-    void Preorder(dugum* nod);
-    void Preorder1(dugum* nod);
+    void Postorder(Dugum * nod);
+    void Preorder(Dugum* nod);
+    void Preorder1(Dugum* nod);
 };
 

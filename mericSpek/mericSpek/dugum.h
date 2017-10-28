@@ -6,7 +6,7 @@ using namespace std;
 //using  data_tipi = int;
 
 
-class dugum
+class Dugum
 {
 
 private:
@@ -15,23 +15,23 @@ private:
     //data structure
     int id;
     data_tipi deger;
-    dugum * parent;
+    Dugum * parent;
     int uzerindenGecme;
-    vector <dugum*> *children;
+    vector <Dugum*> *children;
     int depth;
     
 public:
     //functions, constructors, destructures
-    dugum( );
-    dugum(data_tipi deger);
-    ~dugum();
+    Dugum( );
+    Dugum(data_tipi deger);
+    ~Dugum();
     
     data_tipi getDeger();
-    dugum * getParent();
+    Dugum * getParent();
     int addChild(data_tipi, int option);
     void visited();
     int getChildrenCount();
-    dugum * getChildAt(int index);
+    Dugum * getChildAt(int index);
     char * toString();
 };
 

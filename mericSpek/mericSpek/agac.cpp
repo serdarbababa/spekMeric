@@ -1,27 +1,27 @@
 #include "Agac.h"
 
 
-agac::agac(){
+Agac::Agac(){
 	root=NULL;
     neighbour=5;
 }
 
-agac::~agac(void){
+Agac::~Agac(void){
 }
 
-void agac::agacYarat(){
+void Agac::agacYarat(){
 	root = NULL;
     neighbour=5;
 }
 
-void agac::dalEkle(data_tipi * veriler, int derinligi){
+void Agac::dalEkle(data_tipi * veriler, int derinligi){
 	if(root==NULL){
-		root = new dugum(-9999);
+		root = new Dugum(-9999);
 	}	
 	dugumEkle(veriler, derinligi,this->root);
 }
 
-void agac::dugumEkle(data_tipi *veriler, int derinlik, dugum *nod){
+void Agac::dugumEkle(data_tipi *veriler, int derinlik, Dugum *nod){
     int insertedChildIndex = nod->addChild(veriler[0], 1);
 	//cout << insertedChildIndex << endl;
     if(derinlik ==1){
@@ -32,7 +32,7 @@ void agac::dugumEkle(data_tipi *veriler, int derinlik, dugum *nod){
 		dugumEkle(veriler+1,derinlik-1,nod->getChildAt(insertedChildIndex));
 }
 /*
-void agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
+void Agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
 	
 	bool willBeInserted = true;
 	int insertedChildIndex = -1;
@@ -69,7 +69,7 @@ void agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
 }
 */
 
-void agac::Postorder(dugum * nod)
+void Agac::Postorder(Dugum * nod)
 {
 	if (nod != NULL)
 	{
@@ -81,7 +81,7 @@ void agac::Postorder(dugum * nod)
 	}
 }
 
-void agac::Preorder(dugum* nod)
+void Agac::Preorder(Dugum* nod)
 {
 	if (nod)
 	{
@@ -97,13 +97,13 @@ void agac::Preorder(dugum* nod)
 }
 
 
-void agac::Preorder1(dugum* nod)
+void Agac::Preorder1(Dugum* nod)
 {
 	if (nod)
 	{
 		cout << nod->getDeger() << " ";
 		int count = 0 ;
-		dugum *tempN = nod->getParent();
+		Dugum *tempN = nod->getParent();
 		while( tempN){
 			count++;
 			tempN=tempN->getParent();
@@ -115,14 +115,14 @@ void agac::Preorder1(dugum* nod)
 	}
 }
 
-void agac::Postorder(){
+void Agac::Postorder(){
 	Postorder(this->root);
 }
-void agac::Preorder(){
+void Agac::Preorder(){
 		Preorder(this->root);
 	}
 
-void agac::save(){
+void Agac::save(){
 
 
 	FILE *fp = fopen("tree.txt", "w");
@@ -137,7 +137,7 @@ void agac::save(){
 
 }
 
-void agac::serialize(dugum* nod, FILE *fp){
+void Agac::serialize(Dugum* nod, FILE *fp){
 	// If current node is NULL, store marker
 	if (nod->getChildrenCount() == 0 )
     {
@@ -159,16 +159,16 @@ void agac::serialize(dugum* nod, FILE *fp){
 }
 
 
-void agac::open(){
+void Agac::open(){
 	if(root==NULL){		
-		root = new dugum(-9999);
+		root = new Dugum(-9999);
 	}	
 	
     FILE *fp = fopen("tree.txt", "r");
     // item is marker, then return
     int val;
 	bool rootInserted = true;
-	//this->agacYarat();
+	//this->AgacYarat();
 
     while ( fscanf(fp, "%d ", &val) ){
 		if(rootInserted && val ==-9999)
@@ -187,7 +187,7 @@ void agac::open(){
 /*
 //void open(){
 //	if(root==NULL){		
-//		root = new dugum(-9999);
+//		root = new Dugum(-9999);
 //	}	
 //	
 //    FILE *fp = fopen("tree.txt", "r");
@@ -202,7 +202,7 @@ void agac::open(){
 //}
 */
  
-void agac::deSerialize(dugum *&nod, FILE *fp)
+void Agac::deSerialize(Dugum *&nod, FILE *fp)
 {
     // Read next item from file. If theere are no more items or next
     // item is marker, then return
@@ -211,7 +211,7 @@ void agac::deSerialize(dugum *&nod, FILE *fp)
        return;
  
     // Else create node with this item and recur for children
-    root = new dugum(val);
+    root = new Dugum(val);
     //deSerialize(root->left, fp);
     //deSerialize(root->right, fp);
 

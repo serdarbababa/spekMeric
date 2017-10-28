@@ -8,7 +8,7 @@
 
 #include "Bellek.hpp"
 Bellek::Bellek(int depth){
-    a=new agac();
+    a=new Agac();
     this->depth=depth;
 }
 

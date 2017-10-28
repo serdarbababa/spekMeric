@@ -1,4 +1,4 @@
-#include "agac.h"
+#include "Agac.h"
 #include "Utility.h"
 #include <fstream>
 #include <iostream>
@@ -36,7 +36,7 @@ void communicate(){
 }
 
 void testTree(){
-    agac *a = new agac();
+    Agac *a = new Agac();
     int depth = 5;
     data_tipi  *veri= new int[depth];// {5,4,7,1,3};
     

@@ -27,12 +27,12 @@
 #include <fstream>
 #include <string.h>
 
-#include "bellek.hpp"
+#include "Bellek.hpp"
 
 using namespace std;
 class Haberlesme{
 private:
-    bellek *;
+    Bellek * b;
     //configuration
     int PORT;
     int BACKLOG;
@@ -42,7 +42,7 @@ public:
     Haberlesme(int treeDepth){
         PORT =3490;
         BACKLOG=10;
-        b = new bellek(treeDepth);
+        b = new Bellek(treeDepth);
     }
     
     //starts the communication
