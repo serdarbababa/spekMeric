@@ -1,40 +1,36 @@
 #include "Utility.h"
 
-
 Utility::Utility(void)
 {
 }
-
 
 Utility::~Utility(void)
 {
 }
 
+/*
+void discreteHaarWaveletTransform(data_tipi * x, int size){
+    
+	data_tipi *output = new data_tipi[size];
 
-//void discreteHaarWaveletTransform(data_tipi * x, int size){
-//    
-//	data_tipi *output = new data_tipi[size];
-//
-//    int length = size/2;
-//
-//	while(true){
-//        for (int i = 0 ; i <length;i++){
-//			data_tipi summ = x[i * 2] + x[i * 2 + 1];
-//            data_tipi difference = x[i * 2] - x[i * 2 + 1];
-//            output[i] = summ;
-//            output[length + i] = difference;
-//		}
-//        if (length == 1)
-//            return output;
-//
-//        
-//        //x = output[:length << 1]
-//
-//        length /=2;
-//}
+    int length = size/2;
 
+	while(true){
+        for (int i = 0 ; i <length;i++){
+			data_tipi summ = x[i * 2] + x[i * 2 + 1];
+            data_tipi difference = x[i * 2] - x[i * 2 + 1];
+            output[i] = summ;
+            output[length + i] = difference;
+		}
+        if (length == 1)
+            return output;
 
-//public static int[] discreteHaarWaveletTransform(int[] input) {
+        
+        x = output[:length << 1]
+
+        length /=2;
+}*/
+
 
 data_tipi * Utility::discreteHaarWaveletTransform(data_tipi * inputI, int size){    
 	
@@ -103,26 +99,93 @@ void Utility::readWav(char * filename){
 }
 */
 void Utility::generate_carrier_signal(int samples_in_second, int frequency, data_tipi max){
-	carrier_signal = new data_tipi[samples_in_second];
+	//carrier_signal = new data_tipi[samples_in_second];
 	//for(int i = 0 ; i < 
 
 
 }
-//
-//data_tipi * discreteHaarWaveletTransform(data_tipi * x, int size){
-//
-//	data_tipi *t=calloc(len+f-1, sizeof(double));
-//memcpy(&t[f], x, len*sizeof(double));        
-//for (int i=0; i<lev; i++) {
-//memset(t, 0, (f-1)*sizeof(double));        
-//memset(y, 0, len*sizeof(double));
-//int len2=len/2;
-//for (int j=0; j<len2; j++)           
-//    for (int k=0; k<f; k++) {          
-//        y[j]     +=t[2*j+k]*h[k];      
-//        y[j+len2]+=t[2*j+k]*g[k];      
-//    }
-//len=len2;                            
-//memcpy(&t[f], y, len*sizeof(double));    
-//}
-//}
+
+
+int Utility::readWav(char* filePath ,short **output1, int *fs){
+    
+    wav_hdr wavHeader;
+    int headerSize = sizeof(wav_hdr), filelength = 0;
+    
+    FILE* wavFile = fopen(filePath, "r");
+    if (wavFile == nullptr)
+    {
+        fprintf(stderr, "Unable to open wave file: %s\n", filePath);
+        return 1;
+    }
+    filelength = getFileSize(wavFile);
+    
+    
+    //Read the header
+    size_t bytesRead = fread(&wavHeader, 1, headerSize, wavFile);
+    cout << "Header Read " << bytesRead << " bytes." << endl;
+    
+    short * output = new short[filelength-headerSize];
+    *fs= wavHeader.SamplesPerSec;
+    if (bytesRead > 0)
+    {
+        //Read the data
+        uint16_t bytesPerSample = wavHeader.bitsPerSample / 8;      //Number     of bytes per sample
+        uint64_t numSamples = wavHeader.ChunkSize / bytesPerSample; //How many samples are in the wav file?
+        static const uint16_t BUFFER_SIZE = 4096;
+        char * buffer = new char[BUFFER_SIZE];
+        bool jumping = false;
+        int counter = 0;
+        while ((bytesRead = fread(buffer, sizeof buffer[0], BUFFER_SIZE / (sizeof buffer[0]), wavFile)) > 0)
+        {
+            /** DO SOMETHING WITH THE WAVE DATA HERE **/
+            cout << "Read " << bytesRead << " bytes." << endl;
+            int upperBound =  BUFFER_SIZE/(wavHeader.bitsPerSample/8);
+            for(int i = 0 ; i <upperBound; i+=2){
+                
+                //short val =(short)(buffer[i*2] | buffer[i*2+1] << 8);
+                
+                output[counter++]=(short)(buffer[i*2] | buffer[i*2+1] << 8);
+                //counter++;
+            }
+            if(jumping)
+                break;
+        }
+        printf("\n\n");
+        delete [] buffer;
+        buffer = nullptr;
+        
+        
+        cout << "File is                    :" << filelength << " bytes." << endl;
+        cout << "RIFF header                :" << wavHeader.RIFF[0] << wavHeader.RIFF[1] << wavHeader.RIFF[2] << wavHeader.RIFF[3] << endl;
+        cout << "WAVE header                :" << wavHeader.WAVE[0] << wavHeader.WAVE[1] << wavHeader.WAVE[2] << wavHeader.WAVE[3] << endl;
+        cout << "FMT                        :" << wavHeader.fmt[0] << wavHeader.fmt[1] << wavHeader.fmt[2] << wavHeader.fmt[3] << endl;
+        cout << "Data size                  :" << wavHeader.ChunkSize << endl;
+        
+        // Display the sampling Rate from the header
+        cout << "Sampling Rate              :" << wavHeader.SamplesPerSec << endl;
+        cout << "Number of bits used        :" << wavHeader.bitsPerSample << endl;
+        cout << "Number of channels         :" << wavHeader.NumOfChan << endl;
+        cout << "Number of bytes per second :" << wavHeader.bytesPerSec << endl;
+        cout << "Data length                :" << wavHeader.Subchunk2Size << endl;
+        cout << "Audio Format               :" << wavHeader.AudioFormat << endl;
+        // Audio format 1=PCM,6=mulaw,7=alaw, 257=IBM Mu-Law, 258=IBM A-Law, 259=ADPCM
+        
+        cout << "Block align                :" << wavHeader.blockAlign << endl;
+        cout << "Data string                :" << wavHeader.Subchunk2ID[0] << wavHeader.Subchunk2ID[1] << wavHeader.Subchunk2ID[2] << wavHeader.Subchunk2ID[3] << endl;
+        cout << "header size = "<<sizeof(wavHeader)<<endl;
+    }
+    fclose(wavFile);
+    *output1=output;
+    return 0;
+}
+
+// find the file size
+int Utility::getFileSize(FILE* inFile){
+    int fileSize = 0;
+    fseek(inFile, 0, SEEK_END);
+    
+    fileSize = (int)ftell(inFile);
+    
+    fseek(inFile, 0, SEEK_SET);
+    return fileSize;
+}

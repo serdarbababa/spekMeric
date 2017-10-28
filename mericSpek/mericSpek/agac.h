@@ -10,15 +10,14 @@ class agac
 public:
 	agac(void );
 	~agac(void);
+    
 	void agacYarat();
 	void dalEkle(data_tipi * veriler, int derinlik );
 	void dugumEkle(data_tipi *deger,int derinlik, dugum * nod);
 	void dugumEkleFarkli(data_tipi *deger,int derinlik, dugum * nod);
 	
     //gosterim
-    void Postorder(dugum * nod);
-	void Preorder(dugum* nod);
-	void Preorder1(dugum* nod);
+    
 	void Postorder();
 	void Preorder();
 
@@ -31,5 +30,8 @@ public:
 private:
 	dugum * root;
     int neighbour ;
+    void Postorder(dugum * nod);
+    void Preorder(dugum* nod);
+    void Preorder1(dugum* nod);
 };
 
