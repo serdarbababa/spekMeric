@@ -17,11 +17,12 @@ class Bellek{
 private:
     //hold in memory
     Agac *a;
-    int depth;
+    //int depth;
 public:
-    Bellek(int depth);
-    int egit(data_tipi *veri);
-    int wavIleEgit(char * filename);
+    Bellek();
+    int egit(data_tipi *veri, int depth);
+    int wavIleEgit(char * filename, int depth, int kaydirma);
     void goster();
+    void ozetle();
 };
 #endif /* bellek_hpp */

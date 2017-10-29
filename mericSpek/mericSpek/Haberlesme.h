@@ -32,17 +32,17 @@
 using namespace std;
 class Haberlesme{
 private:
-    Bellek * b;
+    Bellek * bellek;
     //configuration
     int PORT;
     int BACKLOG;
 public:
     
     //constructor
-    Haberlesme(int treeDepth){
+    Haberlesme(){
         PORT =3490;
         BACKLOG=10;
-        b = new Bellek(treeDepth);
+        //bellek = new Bellek(treeDepth);
     }
     
     //starts the communication

@@ -89,7 +89,7 @@ void Haberlesme::haberles(){
                     exit(1);
                 }
                 
-                printf("Server:Msg Received %s\n", buffer);
+                printf("Server:Msg Received :%s\n", buffer);
                 int response = actToCommands(buffer);
                 sprintf(buffer,"response = %d", response);
                 if ((send(client_fd,buffer, strlen(buffer)+2,0))== -1)
@@ -120,26 +120,55 @@ int Haberlesme::actToCommands(char * args){
     char delims[] = "|";
     if(strlen(args)<=0)
         return 0;
-
     int i = 0;
-    strings[i] = strtok( args, delims );
-    while( strings[i] != NULL  )
+    //parse the input string
     {
-        //printf("%d '%s'\n", i, strings[i]);
-        strings[++i] = strtok( NULL, delims );
+        
+        strings[i] = strtok( args, delims );
+        while( strings[i] != NULL  )
+        {
+            //printf("%d '%s'\n", i, strings[i]);
+            strings[++i] = strtok( NULL, delims );
+        }
+        
+        for ( int j = 0; j < i; j++ )
+        {
+            printf("%d '%s'\n", j, strings[j]);
+        }
     }
-
-    for ( int j = 0; j < i; j++ )
-    {
-        printf("%d '%s'\n", j, strings[j]);
+    //cout << strings[0]<<":initialize"<<endl;
+    if(strcmp(strings[0],"basla")==0){
+        cout<<"baslatiyorum"<<endl;
+        bellek=new Bellek();
+        return 1;
+    }
+    else if(strcmp(strings[0],"ogren")==0){
+        cout<<"ogreniyorum"<<endl;
+        data_tipi  *veri= new data_tipi[i-1];
+        for(int j=0;j<i-1;j++)
+            veri[j]=atof(strings[j+1]);
+        bellek->egit(veri,i-1);
+        return 2;
+    }
+    else if(strcmp(strings[0],"goster")==0){
+        cout<<"gosteriyorum"<<endl;
+        bellek->goster();
+        return 3;
+    }else if(strcmp(strings[0],"ozetle")==0){
+        cout<<"ozetliyorum"<<endl;
+        bellek->ozetle();
+        return 4;
+    }else if(strcmp(strings[0],"wav")==0){
+        cout<<"dosya"<<endl;
+        bellek->wavIleEgit(strings[1],atoi(strings[2]) , atoi(strings[3]));
+        return 4;
     }
     
-    if(strings[0]=="initialize"){
-        b;
-    }
-        
+    
+    
     
     return 1;
+
     
 }
 

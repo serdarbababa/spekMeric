@@ -20,7 +20,8 @@
 
 using namespace std;
 
-typedef int data_tipi  ;
+//typedef int data_tipi  ;
+typedef short data_tipi  ;
 
 typedef struct  WAV_HEADER
 {
@@ -53,7 +54,7 @@ public:
 	data_tipi * discreteHaarWaveletTransform(data_tipi * data, int size);
     
     //reads given wav file
-	int readWav(char* filePath ,short ** output, int *fs);
+	int readWav(char* filePath ,data_tipi ** output, int *fs, int * datasize);
 	//generates carrier signal
     void generate_carrier_signal(int samples_in_second, int frequency, data_tipi max);
     //returns size of file

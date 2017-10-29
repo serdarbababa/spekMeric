@@ -33,5 +33,11 @@ public:
     int getChildrenCount();
     Dugum * getChildAt(int index);
     char * toString();
+    int getId(){
+        return id;
+    }
+    int getDugumCount(){
+        return idCount;
+    }
 };
 

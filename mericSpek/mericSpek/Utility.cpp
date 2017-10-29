@@ -106,7 +106,7 @@ void Utility::generate_carrier_signal(int samples_in_second, int frequency, data
 }
 
 
-int Utility::readWav(char* filePath ,short **output1, int *fs){
+int Utility::readWav(char* filePath ,data_tipi **output1, int *fs, int *datasize){
     
     wav_hdr wavHeader;
     int headerSize = sizeof(wav_hdr), filelength = 0;
@@ -122,8 +122,8 @@ int Utility::readWav(char* filePath ,short **output1, int *fs){
     
     //Read the header
     size_t bytesRead = fread(&wavHeader, 1, headerSize, wavFile);
-    cout << "Header Read " << bytesRead << " bytes." << endl;
-    
+    //cout << "Header Read " << bytesRead << " bytes." << endl;
+    *datasize=filelength-headerSize;
     short * output = new short[filelength-headerSize];
     *fs= wavHeader.SamplesPerSec;
     if (bytesRead > 0)
@@ -138,7 +138,7 @@ int Utility::readWav(char* filePath ,short **output1, int *fs){
         while ((bytesRead = fread(buffer, sizeof buffer[0], BUFFER_SIZE / (sizeof buffer[0]), wavFile)) > 0)
         {
             /** DO SOMETHING WITH THE WAVE DATA HERE **/
-            cout << "Read " << bytesRead << " bytes." << endl;
+            //cout << "Read " << bytesRead << " bytes." << endl;
             int upperBound =  BUFFER_SIZE/(wavHeader.bitsPerSample/8);
             for(int i = 0 ; i <upperBound; i+=2){
                 
@@ -154,7 +154,7 @@ int Utility::readWav(char* filePath ,short **output1, int *fs){
         delete [] buffer;
         buffer = nullptr;
         
-        
+        /*
         cout << "File is                    :" << filelength << " bytes." << endl;
         cout << "RIFF header                :" << wavHeader.RIFF[0] << wavHeader.RIFF[1] << wavHeader.RIFF[2] << wavHeader.RIFF[3] << endl;
         cout << "WAVE header                :" << wavHeader.WAVE[0] << wavHeader.WAVE[1] << wavHeader.WAVE[2] << wavHeader.WAVE[3] << endl;
@@ -173,6 +173,7 @@ int Utility::readWav(char* filePath ,short **output1, int *fs){
         cout << "Block align                :" << wavHeader.blockAlign << endl;
         cout << "Data string                :" << wavHeader.Subchunk2ID[0] << wavHeader.Subchunk2ID[1] << wavHeader.Subchunk2ID[2] << wavHeader.Subchunk2ID[3] << endl;
         cout << "header size = "<<sizeof(wavHeader)<<endl;
+         */
     }
     fclose(wavFile);
     *output1=output;

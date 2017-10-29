@@ -27,6 +27,11 @@ public:
 	void serialize(Dugum* nod, FILE *fp);
 	void deSerialize(Dugum *&nod, FILE *fp);
 
+    void summarize(){
+        cout<<"toplam dugum sayisi = "<<root->getDugumCount()<<endl;
+        for(int i=0;i<root->getChildrenCount();i++)
+            cout<<"cocuk "<<i<< ", id ="<< root->getChildAt(i)->getId()<<", deger="<< root->getChildAt(i)->getDeger() <<endl;
+    }
 private:
 	Dugum * root;
     int neighbour ;

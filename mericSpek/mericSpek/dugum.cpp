@@ -10,7 +10,7 @@ Dugum::Dugum( )
     this->id=idCount++;
     depth=0;
 }
-Dugum::Dugum(int deger)
+Dugum::Dugum(data_tipi deger)
 {
 	this->deger = deger;
 	this->parent=NULL;
