@@ -19,6 +19,7 @@ private:
     int uzerindenGecme;
     vector <Dugum*> *children;
     int depth;
+    static int komsuluk;
     
 public:
     //functions, constructors, destructures
@@ -29,6 +30,8 @@ public:
     data_tipi getDeger();
     Dugum * getParent();
     int addChild(data_tipi, int option);
+    int buildChild(int id, data_tipi, int option);
+    void setIDMax(int id);
     void visited();
     int getChildrenCount();
     Dugum * getChildAt(int index);
@@ -38,6 +41,9 @@ public:
     }
     int getDugumCount(){
         return idCount;
+    }
+    int getUzerindenGecme(){
+        return uzerindenGecme;
     }
 };
 

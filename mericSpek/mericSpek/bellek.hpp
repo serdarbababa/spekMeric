@@ -20,9 +20,20 @@ private:
     //int depth;
 public:
     Bellek();
-    int egit(data_tipi *veri, int depth);
-    int wavIleEgit(char * filename, int depth, int kaydirma);
+    //egit options
+    // 1 exact match
+    //2 approximate match
+    // 3 use wavelet, exact match
+    // 4 use wavelet, apropriate match
+    int egit(data_tipi *veri, int depth, int option);
+    //// 1 exact match
+    //2 approximate match
+    // 3 use wavelet, exact match
+    // 4 use wavelet, apropriate match
+    int wavIleEgit(char * filename, int depth, int kaydirma, int option);
     void goster();
     void ozetle();
+    int kaydet(char * filename);
+    int dosyadanGeriGetir(char * filename);
 };
 #endif /* bellek_hpp */

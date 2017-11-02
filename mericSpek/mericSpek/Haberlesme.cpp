@@ -144,10 +144,20 @@ int Haberlesme::actToCommands(char * args){
     }
     else if(strcmp(strings[0],"ogren")==0){
         cout<<"ogreniyorum"<<endl;
-        data_tipi  *veri= new data_tipi[i-1];
+        int option = 1;
+        if(strcmp(strings[1],"duz")==0)
+            option=1;
+        else if(strcmp(strings[1],"benzer")==0)
+            option = 2;
+        else if(strcmp(strings[1],"wavelet duz")==0)
+            option = 3;
+        else if(strcmp(strings[1],"wavelet benzer")==0)
+            option = 4;
+        data_tipi  *veri= new data_tipi[i-2];
+        
         for(int j=0;j<i-1;j++)
             veri[j]=atof(strings[j+1]);
-        bellek->egit(veri,i-1);
+        bellek->egit(veri,i-1,option);
         return 2;
     }
     else if(strcmp(strings[0],"goster")==0){
@@ -160,14 +170,24 @@ int Haberlesme::actToCommands(char * args){
         return 4;
     }else if(strcmp(strings[0],"wav")==0){
         cout<<"dosya"<<endl;
-        bellek->wavIleEgit(strings[1],atoi(strings[2]) , atoi(strings[3]));
-        return 4;
+        int option = 1;
+        if(strcmp(strings[1],"duz")==0)
+            option=1;
+        else if(strcmp(strings[1],"benzer")==0)
+            option = 2;
+        else if(strcmp(strings[1],"wavelet duz")==0)
+            option = 3;
+        else if(strcmp(strings[1],"wavelet benzer")==0)
+            option = 4;
+        
+        bellek->wavIleEgit(strings[1],atoi(strings[2]) , atoi(strings[3]),option);
+        return 5;
     }
     
     
     
     
-    return 1;
+    return -1;
 
     
 }
@@ -223,7 +243,7 @@ void Haberlesme::testNefunctional(){
     struct timeval start1, end1;
     gettimeofday(&start1, NULL);
     //also keep track of the amount of data sent as well
-    int bytesRead, bytesWritten = 0;
+    int bytesRead=0, bytesWritten = 0;
     while(1)
     {
         //receive a message from the client (listen)

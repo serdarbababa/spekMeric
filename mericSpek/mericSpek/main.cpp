@@ -17,21 +17,56 @@ void testTree();
 void testWaveletTree();
 void testReadSound();
 void communicate();
-
+void testLearning(Bellek *bellek);
+void restoreTree(Bellek *bellek);
 //Bellek *bellek;
 
 int main(){
     
-    
+    Bellek *bellek = new Bellek();
     //testTree();
     //testWaveletTree();
     //testReadSound();
-    communicate();
+    //communicate();
+    //testLearning(bellek);
+    //restoreTree(bellek);
+    //testLearning(bellek);
+    restoreTree(bellek);
     return 0;
 }
 
-
-
+void restoreTree(Bellek *bellek ){
+    
+    cout << "restoring tree from file " << bellek->dosyadanGeriGetir("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeData.txt")<<endl;
+    bellek->goster();
+    bellek->ozetle();
+    
+}
+void testLearning(Bellek *bellek ){
+    //= new Bellek();
+    
+    int depth = 8;
+    data_tipi  *veri= new data_tipi[depth];// {5,4,7,1,3};
+    
+    for (int j = 0 ; j < 4;j++){
+        for (int i = 0 ; i < depth;i++){
+            veri[i]=(int)(rand())%16;
+            printf("%d\t",veri[i]);
+        }
+        bellek->egit(veri, depth, 1);
+        printf("\n");
+    }
+    /*char  filename[200];
+    sprintf(filename, "/Users/ser/OneDrive/teza/datasets/Heinrich Mann - Ingerul albastru.mp3");
+    sprintf(filename, "/Users/ser/OneDrive/spectron/data/brian.wav");
+    bellek->wavIleEgit(filename, 16, 8, 4);
+    bellek->ozetle();
+    bellek->wavIleEgit(filename, 16, 8, 4);
+    */
+    bellek->goster();
+    bellek->ozetle();
+    cout << "saving tree to file " << bellek->kaydet("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeData.txt")<<endl;
+}
 void communicate(){
     Haberlesme *h = new Haberlesme();
     
@@ -51,7 +86,7 @@ void testTree(){
                 veri[i]=(int)(rand())%16;
                 printf("%d\t",veri[i]);
             }
-        a->dalEkle(veri,depth);
+        a->dalEkle(veri, depth, 1);
         printf("\n");
     }
     cout << endl;

@@ -49,6 +49,9 @@ data_tipi * Utility::discreteHaarWaveletTransform(data_tipi * inputI, int size){
             output[length + i] = difference/2;
         }
         if (length == 1) {
+            //cout <<endl;
+            //for(int i = 0 ; i < size; i++)
+            //    cout << output[i]<<"\t";
             return output;
         }
 
@@ -57,6 +60,7 @@ data_tipi * Utility::discreteHaarWaveletTransform(data_tipi * inputI, int size){
 		for(int i = 0;i<length ;i++)
 			inputI[i]=output[i];
     }
+    
 	return output;
 }
 /*

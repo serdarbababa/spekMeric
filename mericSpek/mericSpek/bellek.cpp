@@ -12,12 +12,20 @@ Bellek::Bellek(){
     //this->depth=depth;
 }
 
-int Bellek::egit(data_tipi *veri,int depth){
-    a->dalEkle(veri,depth);
+int Bellek::egit(data_tipi *veri,int depth, int option){
+    Utility *u = new Utility();
+    if(option ==1)
+        a->dalEkle(veri,depth, option);
+    else if(option==2)
+        a->dalEkle(veri,depth,option);
+    else if(option==3)
+        a->dalEkle(u->discreteHaarWaveletTransform(veri,depth),depth, 1);
+    else if(option==4)
+        a->dalEkle(u->discreteHaarWaveletTransform(veri,depth),depth, 2);
     return 0;
 }
 
-int Bellek::wavIleEgit(char *filename, int depth, int kaydirma){
+int Bellek::wavIleEgit(char *filename, int depth, int kaydirma,int option){
     Utility *u = new Utility();
     short * output;
     int fs;
@@ -35,8 +43,15 @@ int Bellek::wavIleEgit(char *filename, int depth, int kaydirma){
         //    cout << i << j << veri[j]<<endl;;
         //}
         //egit( veri,depth);
+        if(option ==1)
+            a->dalEkle(output+i,depth, option);
+        else if(option==2)
+            a->dalEkle(output+i,depth,option);
+        else if(option==3)
+            a->dalEkle(u->discreteHaarWaveletTransform(output+i,depth),depth, 1);
+        else if(option==4)
+            a->dalEkle(u->discreteHaarWaveletTransform(output+i,depth),depth, 2);
         
-        a->dalEkle(output+i,depth);
     }
     return 0;
 }
@@ -47,4 +62,11 @@ void Bellek::goster(){
 }
 void Bellek::ozetle(){
     a->summarize();
+}
+int Bellek::kaydet(char * filename){
+    return a->saveB(filename);
+}
+int Bellek::dosyadanGeriGetir(char * filename){
+    return a->openB(filename);
+
 }
