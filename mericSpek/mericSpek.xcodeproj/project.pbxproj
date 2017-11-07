@@ -13,6 +13,7 @@
 		D676DBE41FA4740E002EE643 /* Dugum.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D676DBE31FA4740E002EE643 /* Dugum.cpp */; };
 		D6B4922B1F9D000A00A8314D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B4922A1F9D000A00A8314D /* main.cpp */; };
 		D6B4923C1F9DD03B00A8314D /* Utility.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6B492381F9DD03B00A8314D /* Utility.cpp */; };
+		D6E590B21FB0BEE900DF4857 /* wavfile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D6E590B11FB0BEE900DF4857 /* wavfile.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		D6B4922A1F9D000A00A8314D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D6B492341F9DD03B00A8314D /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		D6B492381F9DD03B00A8314D /* Utility.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utility.cpp; sourceTree = "<group>"; };
+		D6E590B01FB0BE6500DF4857 /* wavfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = wavfile.h; sourceTree = "<group>"; };
+		D6E590B11FB0BEE900DF4857 /* wavfile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = wavfile.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				D6B492381F9DD03B00A8314D /* Utility.cpp */,
 				D6B492341F9DD03B00A8314D /* Utility.h */,
 				D6B4922A1F9D000A00A8314D /* main.cpp */,
+				D6E590B01FB0BE6500DF4857 /* wavfile.h */,
+				D6E590B11FB0BEE900DF4857 /* wavfile.cpp */,
 			);
 			path = mericSpek;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6E590B21FB0BEE900DF4857 /* wavfile.cpp in Sources */,
 				D6B4923C1F9DD03B00A8314D /* Utility.cpp in Sources */,
 				D676DBDC1FA47248002EE643 /* Agac.cpp in Sources */,
 				D676DBE41FA4740E002EE643 /* Dugum.cpp in Sources */,

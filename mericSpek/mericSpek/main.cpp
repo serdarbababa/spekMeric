@@ -16,6 +16,7 @@ using namespace std;
 void testTree();
 void testWaveletTree();
 void testReadSound();
+void testWriteSound();
 void communicate();
 void testLearning(Bellek *bellek);
 void restoreTree(Bellek *bellek);
@@ -26,12 +27,32 @@ int main(){
     Bellek *bellek = new Bellek();
     //testTree();
     //testWaveletTree();
+    char buffer [5];
+    buffer[0]=-73;
+    buffer[1]=-3;
+    buffer[2]=-73;
+    buffer[3]=-3;
+    int i =0;
+    short a = (short)(buffer[i*2] | buffer[i*2+1] << 8);
+    i=1;
+    short b = (short)(buffer[i*2] | buffer[i*2+1] << 8);
+    cout << a<< "\t" << b <<endl;
+    
+    
+    short aa = ( (ushort)buffer[i*2]) + ((short)buffer[i*2+1]) *256;
+    i=1;
+    short bb = ( (ushort)buffer[i*2]) + ((short)buffer[i*2+1]) *256;
+    cout << aa<< "\t" << bb <<endl;
+    a= short(( char)(buffer[1]) << 8 | (unsigned char)(buffer[0]));
+    cout<<a<<endl;
+    testWriteSound();
     //testReadSound();
+    
     //communicate();
     //testLearning(bellek);
     //restoreTree(bellek);
     //testLearning(bellek);
-    restoreTree(bellek);
+    //restoreTree(bellek);
     return 0;
 }
 
@@ -119,9 +140,36 @@ void testReadSound(){
     char filename[100];
     
     sprintf(filename, "/Users/ser/OneDrive/spectron/data/amy.wav");
-    sprintf(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/test_mono_8000Hz_16bit_PCM.wav");
+    //sprintf(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/test_mono_8000Hz_16bit_PCM.wav");
     cout << u->readWav(filename, &output,&fs ,&datasize) << endl;
     cout << "sampling rate " << fs<< endl;
-    for(int i = 100060; i< 100070; i++)
+    for(int i = 200060; i< 200070; i++)
         cout << i<<"\t"<< output[i]<<endl;
+    
+    sprintf(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/cikti.wav");
+    //sprintf(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/test_mono_8000Hz_16bit_PCM.wav");
+    cout << u->readWav(filename, &output,&fs ,&datasize) << endl;
+    cout << "sampling rate " << fs<< endl;
+    for(int i = 200060; i< 200070; i++)
+        cout << i<<"\t"<< output[i]<<endl;
+}
+
+void testWriteSound(){
+    Utility *u = new Utility();
+    short * output;
+    int fs;
+    int datasize;
+    char filename[100];
+    
+    sprintf(filename, "/Users/ser/OneDrive/spectron/data/amy.wav");
+    //sprintf(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/test_mono_8000Hz_16bit_PCM.wav");
+    cout << u->readWav(filename, &output,&fs ,&datasize) << endl;
+    //cout << "sampling rate " << fs<< endl;
+    //u->readWavFile(filename);
+    sprintf(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/cikti.wav");
+    //u->testWav(filename, output, datasize/2, fs);
+    
+    cout << u->writeWav(filename,output, fs, datasize);
+    u->readWavFile(filename);
+    //u->testWav(filename);
 }

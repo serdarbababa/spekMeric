@@ -16,15 +16,33 @@
 #include <time.h> 
 
 
+#include "wavfile.h"
+
+
+namespace little_endian_io
+{
+    template <typename Word>
+    std::ostream& write_word( std::ostream& outs, Word value, unsigned size = sizeof( Word ) )
+    {
+        for (; size; --size, value >>= 8)
+            outs.put( static_cast <char> (value & 0xFF) );
+        return outs;
+    }
+}
+using namespace little_endian_io;
+
 
 
 using namespace std;
+
+
 
 //typedef int data_tipi  ;
 typedef short data_tipi  ;
 
 typedef struct  WAV_HEADER
 {
+    // source https://stackoverflow.com/questions/13660777/c-reading-the-data-part-of-a-wav-file
     /* RIFF Chunk Descriptor */
     uint8_t         RIFF[4];        // RIFF Header Magic header
     uint32_t        ChunkSize;      // RIFF Chunk Size
@@ -50,17 +68,26 @@ public:
 	Utility(void);
 	~Utility(void);
 
+    //test wav library
+    void testWav(char * filename, data_tipi * data, int num_samples, int fs);
     //wavelet transform
 	data_tipi * discreteHaarWaveletTransform(data_tipi * data, int size);
     
     //reads given wav file
 	int readWav(char* filePath ,data_tipi ** output, int *fs, int * datasize);
+    void readWavFile(char * filePath);
+    
+    //writes wav file
+    int writeWav(char* filePath ,data_tipi * output, int fs, int  datasize);
+    
 	//generates carrier signal
     void generate_carrier_signal(int samples_in_second, int frequency, data_tipi max);
     //returns size of file
     int getFileSize(FILE* inFile);
     
 public:
+    //template <typename Word>
+   
 	//data_tipi * data;
 	//int data_size;
 	//int carrier_data_size;
