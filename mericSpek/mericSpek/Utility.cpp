@@ -165,11 +165,11 @@ int Utility::readWav(char* filePath ,data_tipi **output1, int *fs, int *datasize
             if(jumping)
                 break;
         }
-        printf("\n\n");
+        //printf("\n\n");
         delete [] buffer;
         buffer = nullptr;
         
-        
+        /*
         cout << "File is                    :" << filelength << " bytes." << endl;
         cout << "RIFF header                :" << wavHeader.RIFF[0] << wavHeader.RIFF[1] << wavHeader.RIFF[2] << wavHeader.RIFF[3] << endl;
         cout << "WAVE header                :" << wavHeader.WAVE[0] << wavHeader.WAVE[1] << wavHeader.WAVE[2] << wavHeader.WAVE[3] << endl;
@@ -188,7 +188,7 @@ int Utility::readWav(char* filePath ,data_tipi **output1, int *fs, int *datasize
         cout << "Block align                :" << wavHeader.blockAlign << endl;
         cout << "Data string                :" << wavHeader.Subchunk2ID[0] << wavHeader.Subchunk2ID[1] << wavHeader.Subchunk2ID[2] << wavHeader.Subchunk2ID[3] << endl;
         cout << "header size = "<<sizeof(wavHeader)<<endl;
-        
+        */
     }
     fclose(wavFile);
     *output1=output;
@@ -286,7 +286,7 @@ int Utility::writeWav(char* filePath ,data_tipi * output, int fs, int  datasize)
     //double hz        = fs;    // samples per second
     //double frequency = 261.626;  // middle C
     //double seconds   = (float)datasize/(float)fs;      // time
-    cout << "datasize= "<<datasize<<"\t"<< "seconds= "<< (float)datasize/fs << endl;
+    //cout << "datasize= "<<datasize<<"\t"<< "seconds= "<< (float)datasize/fs << endl;
     int N = datasize/2;// hz * seconds;  // total number of samples
     for (int n = 0; n < N; n++)
     {
@@ -312,30 +312,3 @@ int Utility::writeWav(char* filePath ,data_tipi * output, int fs, int  datasize)
 
 
 
-void Utility::testWav(char * filename, data_tipi * data , int num_samples, int fs){
-    //const int NUM_SAMPLES = (WAVFILE_SAMPLES_PER_SECOND*2);
-    
-    int NUM_SAMPLES = num_samples;
-    //short waveform[NUM_SAMPLES];
-    //double frequency = 440.0;
-    //int volume = 32000;
-    int length = NUM_SAMPLES;
-    
-    //int i;
-    //for(i=0;i<length;i++) {
-    //    double t = (double) i / WAVFILE_SAMPLES_PER_SECOND;
-    //    waveform[i] = volume*sin(frequency*t*2*M_PI);
-    //}
-    
-    FILE * f = custom_wavfile_open(filename,fs);
-    if(!f) {
-        printf("couldn't open sound.wav for writing: %s",strerror(errno));
-        return ;
-    }
-    
-    wavfile_write(f,data,length);
-    wavfile_close(f);
-    
-    
-
-}

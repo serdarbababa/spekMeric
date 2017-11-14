@@ -29,9 +29,13 @@ public:
     
     data_tipi getDeger();
     Dugum * getParent();
+    
     int addChild(data_tipi, int option);
     int buildChild(int id, data_tipi, int option);
+    
     void setIDMax(int id);
+    void setID(int id);
+    
     void visited();
     int getChildrenCount();
     Dugum * getChildAt(int index);
@@ -39,6 +43,7 @@ public:
     int getId(){
         return id;
     }
+    int getDugumPosition(data_tipi veri, int option);
     int getDugumCount(){
         return idCount;
     }

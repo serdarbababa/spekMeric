@@ -157,16 +157,16 @@ int Haberlesme::actToCommands(char * args){
         
         for(int j=0;j<i-1;j++)
             veri[j]=atof(strings[j+1]);
-        bellek->egit(veri,i-1,option);
+        bellek->agac_egit(veri,i-1,option);
         return 2;
     }
     else if(strcmp(strings[0],"goster")==0){
         cout<<"gosteriyorum"<<endl;
-        bellek->goster();
+        bellek->agac_goster();
         return 3;
     }else if(strcmp(strings[0],"ozetle")==0){
         cout<<"ozetliyorum"<<endl;
-        bellek->ozetle();
+        bellek->agac_ozetle();
         return 4;
     }else if(strcmp(strings[0],"wav")==0){
         cout<<"dosya"<<endl;
@@ -180,7 +180,7 @@ int Haberlesme::actToCommands(char * args){
         else if(strcmp(strings[1],"wavelet benzer")==0)
             option = 4;
         
-        bellek->wavIleEgit(strings[1],atoi(strings[2]) , atoi(strings[3]),option);
+        bellek->agac_wavIleEgit(strings[2],atoi(strings[3]) , atoi(strings[4]),option);
         return 5;
     }
     

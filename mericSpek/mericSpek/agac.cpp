@@ -1,6 +1,6 @@
 #include "Agac.h"
 
-
+int Agac::leaf_id_counter=0;
 Agac::Agac(){
 	root=NULL;
     //neighbour=5;
@@ -9,10 +9,12 @@ Agac::Agac(){
 Agac::~Agac(void){
 }
 
+/*
 void Agac::agacYarat(){
 	root = NULL;
     //neighbour=5;
 }
+ */
 
 void Agac::dalEkle(data_tipi * veriler, int derinligi, int option){
 	if(root==NULL){
@@ -195,7 +197,7 @@ int Agac::open(char * filename){
     
     return 0;
 }
-
+/*
 int Agac::open1(char * filename){
 	if(root==NULL){		
 		root = new Dugum(-9999);
@@ -230,7 +232,7 @@ int Agac::open1(char * filename){
 	fclose(fp);
     return 0;
 }
-
+*/
 int Agac::saveB(char * filename){
     std::ofstream *fp=new std::ofstream();
     fp->open(filename, std::ios::binary);
@@ -322,6 +324,8 @@ int Agac::openB(char * filename){
 
     }
     fclose(in);
+    
+    //only for root, set the id =0
     root->setIDMax(idMax);
     
     /*ifstream in;
@@ -370,4 +374,63 @@ int Agac::openB(char * filename){
     */
     return 0;
 }
+
+
+void Agac::registerLeafs(){
+    Agac::leaf_id_counter=1;
+    this->leafs = new vector<Dugum *>;
+    doRegisterLeaf(this->root);
+}
+
+void Agac::doRegisterLeaf(Dugum *nod){
+    if (nod != NULL){
+        if(nod->getChildrenCount()==0){
+            
+            nod->setID( Agac::leaf_id_counter++);
+            //Agac::leaf_id_counter= Agac::leaf_id_counter+1;
+        }
+        else{
+            nod->setID( -1);
+            for (int i = 0; i < nod->getChildrenCount(); i++)
+                doRegisterLeaf(nod->getChildAt(i));
+        }
+        //cout << nod->getDeger() << endl;
+        
+    }
+
+}
+
+
+int Agac::getLeafId(data_tipi *veriler, int derinlik, int option){
+    if(root==NULL){
+        return -999;
+    }
+    return dalBul(veriler, derinlik, this->root, option);
+}
+
+
+int Agac::dalBul(data_tipi *veriler, int derinlik, Dugum *nod, int option){
+    int insertedChildIndex = nod->addChild(veriler[0], option);
+    //cout << insertedChildIndex << endl;
+    if(derinlik ==1){
+        nod->getChildAt(insertedChildIndex)->visited();
+        int temp = nod->getChildAt(insertedChildIndex)->getId();
+        return temp;
+        
+    }
+    else{
+        int temp =  dalBul(veriler+1,derinlik-1,nod->getChildAt(insertedChildIndex), option);
+        return temp;
+    }
+}
+
+
+
+
+
+
+
+
+
+
 

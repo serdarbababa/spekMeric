@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.177682"
+            timestampString = "532344916.550085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "115"
@@ -27,7 +27,7 @@
             condition = "counter == 200060"
             continueAfterRunningActions = "Yes"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.179633"
+            timestampString = "532344916.552077"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "161"
@@ -43,7 +43,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.181138"
+            timestampString = "532344916.553513"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -59,12 +59,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Bellek.cpp"
-            timestampString = "531740360.182097"
+            timestampString = "532344916.554881"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "Bellek::wavIleEgit(char *filename, int depth, int kaydirma,int option)"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "Bellek::agac_wavIleEgit(char *filename, int depth, int kaydirma,int option)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -75,12 +75,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Bellek.cpp"
-            timestampString = "531740360.182858"
+            timestampString = "532344916.55649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "Bellek::wavIleEgit(char *filename, int depth, int kaydirma,int option)"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "Bellek::agac_wavIleEgit(char *filename, int depth, int kaydirma,int option)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -91,12 +91,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Bellek.cpp"
-            timestampString = "531740360.183567"
+            timestampString = "532344916.557563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "Bellek::egit(data_tipi *veri,int depth, int option)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "Bellek::agac_egit(data_tipi *veri,int depth, int option)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -107,7 +107,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.184253"
+            timestampString = "532344916.55864"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "40"
@@ -123,11 +123,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/main.cpp"
-            timestampString = "531740360.185936"
+            timestampString = "532344916.559929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
             landmarkName = "testLearning(Bellek *bellek )"
             landmarkType = "9">
          </BreakpointContent>
@@ -139,11 +139,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/main.cpp"
-            timestampString = "531740360.186765"
+            timestampString = "532344916.561683"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "restoreTree(Bellek *bellek )"
             landmarkType = "9">
          </BreakpointContent>
@@ -155,13 +155,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Agac.cpp"
-            timestampString = "531740360.18754"
+            timestampString = "532344916.562946"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "211"
-            endingLineNumber = "211"
-            landmarkName = "Agac::open1(char * filename)"
-            landmarkType = "7">
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -171,11 +171,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Agac.cpp"
-            timestampString = "531740360.18833"
+            timestampString = "532344916.564637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "285"
-            endingLineNumber = "285"
+            startingLineNumber = "287"
+            endingLineNumber = "287"
             landmarkName = "Agac::openB(char * filename)"
             landmarkType = "7">
          </BreakpointContent>
@@ -187,13 +187,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/main.cpp"
-            timestampString = "531740360.189062"
+            timestampString = "532344916.565811"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "testWriteSound()"
-            landmarkType = "9">
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -203,55 +203,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.189848"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "316"
-            endingLineNumber = "316"
-            landmarkName = "Utility::testWav(char * filename, data_tipi * data , int num_samples, int fs)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.191447"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "330"
-            endingLineNumber = "330"
-            landmarkName = "Utility::testWav(char * filename, data_tipi * data , int num_samples, int fs)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.1931"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "Utility::testWav(char * filename, data_tipi * data , int num_samples, int fs)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.194024"
+            timestampString = "532344916.566915"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -267,7 +219,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.197293"
+            timestampString = "532344916.568085"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
@@ -283,7 +235,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.19881"
+            timestampString = "532344916.56922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "268"
@@ -299,7 +251,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.200255"
+            timestampString = "532344916.570314"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "269"
@@ -315,11 +267,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/main.cpp"
-            timestampString = "531740360.201729"
+            timestampString = "532344916.571447"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "241"
+            endingLineNumber = "241"
             landmarkName = "testWriteSound()"
             landmarkType = "9">
          </BreakpointContent>
@@ -331,11 +283,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/main.cpp"
-            timestampString = "531740360.202396"
+            timestampString = "532344916.572412"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "171"
-            endingLineNumber = "171"
+            startingLineNumber = "240"
+            endingLineNumber = "240"
             landmarkName = "testWriteSound()"
             landmarkType = "9">
          </BreakpointContent>
@@ -347,7 +299,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.203032"
+            timestampString = "532344916.57318"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -363,12 +315,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "mericSpek/Utility.cpp"
-            timestampString = "531740360.20439"
+            timestampString = "532344916.573806"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
             endingLineNumber = "154"
             landmarkName = "Utility::readWav(char* filePath ,data_tipi **output1, int *fs, int *datasize)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mericSpek/main.cpp"
+            timestampString = "532344916.57435"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "testWaveTrain(Bellek *bellek)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mericSpek/Bellek.cpp"
+            timestampString = "532344916.574768"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "Bellek::getBranchId(data_tipi *veri,int depth, int option)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mericSpek/Agac.cpp"
+            timestampString = "532344916.575108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "408"
+            endingLineNumber = "408"
+            landmarkName = "Agac::getLeafId(data_tipi *veriler, int derinlik, int option)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "mericSpek/Agac.cpp"
+            timestampString = "532344916.575719"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "417"
+            endingLineNumber = "417"
+            landmarkName = "Agac::dalBul(data_tipi *veriler, int derinlik, Dugum *nod, int option)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

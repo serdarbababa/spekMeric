@@ -16,7 +16,7 @@
 #include <time.h> 
 
 
-#include "wavfile.h"
+//#include "wavfile.h"
 
 
 namespace little_endian_io
@@ -69,7 +69,7 @@ public:
 	~Utility(void);
 
     //test wav library
-    void testWav(char * filename, data_tipi * data, int num_samples, int fs);
+    //void testWav(char * filename, data_tipi * data, int num_samples, int fs);
     //wavelet transform
 	data_tipi * discreteHaarWaveletTransform(data_tipi * data, int size);
     
@@ -82,10 +82,13 @@ public:
     
 	//generates carrier signal
     void generate_carrier_signal(int samples_in_second, int frequency, data_tipi max);
+   
+    
+public:
+    
     //returns size of file
     int getFileSize(FILE* inFile);
     
-public:
     //template <typename Word>
    
 	//data_tipi * data;

@@ -9,38 +9,45 @@ using namespace std;
 class Agac
 {
 public:
+    static int leaf_id_counter;
+    
 	Agac(void );
 	~Agac(void);
     
+	//void agacYarat();
     
-	void agacYarat();
+    /* dal eklemek icin dugum ekle cagiriliyor*/
 	void dalEkle(data_tipi * veriler, int derinlik, int option );
-	void dugumEkle(data_tipi *deger,int derinlik, Dugum * nod, int option);
 	
-	
-    //gosterim
-    
+    /*gosterim*/
 	void Postorder();
 	void Preorder();
 
-    //tree saving ops
-    //save binary
+    /* agaci dosyaya kaydetme ve okuma(geri getirme)*/
+    
+    //save binary by calling serializeB. It opens and closes file
     int saveB(char * filename);
-    void serializeB(Dugum* nod, std::ofstream *fp);
-    //open binary
+    //restore binary file to tree
     int openB(char *filename);
-    //save
+    
+    //agaci text dosyasina yazarak kaydediyor
 	int save(char * filename);
-	void serialize(Dugum* nod, FILE *fp);
+	
     //opening
     int open(char * filename);
-    int open1(char * filename);
+    //int open1(char * filename);
     
     //keeping track of the leafs
     void registerLeafs();
-    Dugum * getLeaf(int idLeaf);
-    int * getBranch(int idLeaf);
-
+    
+    int getLeafId(data_tipi * veriler, int derinlik, int option);
+    
+    /*  */
+    void brief_summary(){
+        cout<<"toplam dugum sayisi = "<<root->getDugumCount()<<endl;
+        cout<< "leaf count = " << leaf_id_counter<<endl;
+    }
+    
     void summarize(){
         cout<<"toplam dugum sayisi = "<<root->getDugumCount()<<endl;
         for(int i=0;i<root->getChildrenCount();i++)
@@ -48,7 +55,23 @@ public:
     }
 private:
 	Dugum * root;
-    vector<Dugum *> leafs;
+    vector<Dugum *> *leafs;
+    
+    /*dal eklemek icin dugum ekler*/
+    void dugumEkle(data_tipi *deger,int derinlik, Dugum * nod, int option);
+    
+    /*dal id bulmak icin */
+    int dalBul(data_tipi *deger,int derinlik, Dugum * nod, int option);
+    
+    
+    /* agaci binary dosyaya yazar*/
+    void serializeB(Dugum* nod, std::ofstream *fp);
+    /* agaci text dosyaya yazar*/
+    void serialize(Dugum* nod, FILE *fp);
+    
+    
+    void doRegisterLeaf(Dugum *nod);
+    
     //int neighbour ;
     
     void Postorder(Dugum * nod);

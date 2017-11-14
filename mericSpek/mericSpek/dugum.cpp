@@ -39,7 +39,7 @@ Dugum * Dugum::getChildAt(int index){
 }
 
 void Dugum::visited(){
-    uzerindenGecme++;
+    this->uzerindenGecme++;
 }
 
 int Dugum::addChild(data_tipi data, int option){
@@ -76,7 +76,7 @@ int Dugum::addChild(data_tipi data, int option){
         if (children->size() >0){
             //cocugu ekleyecek yeri belirle
             for (int j = 0; j < children->size(); j++){
-                if (abs(children->at(j)->deger - data)< komsuluk){
+                if (abs(children->at(j)->deger - data)<= komsuluk){
                     insertedChildIndex = j;
                     willBeInserted=false;
                     break;
@@ -141,15 +141,24 @@ int Dugum::buildChild(int id, data_tipi data, int option){
         n->depth= this->depth+1;
         n->id=id;
         this->children->insert(children->begin()+insertedChildIndex, n);
+        //Dugum::idCount++;
+        
     }
     return insertedChildIndex;
         
     return 0;
     
 }
+
+//sets the id count = 0 for root
 void Dugum::setIDMax(int idi){
-    idCount=++idi;
+    //idCount=++idi;
     this->id=0;
+}
+
+void Dugum::setID(int idi){
+    //idCount=++idi;
+    this->id=idi;
 }
 
 int Dugum::getChildrenCount(){
@@ -164,3 +173,20 @@ char * Dugum::toString(){
     sprintf(cikti,"%s%d (%d) %d",cikti,deger,uzerindenGecme,id);
     return cikti;
 }
+
+int Dugum::getDugumPosition(data_tipi veri, int option){
+    int position = -999;
+    for(int i = 0 ; i < this->children->size(); i++){
+        if(this->children->at(i)->deger==deger && option == 1){
+            position=i;
+            break;
+        }
+        else if(abs( this->children->at(i)->deger-veri)<=komsuluk && option == 2){
+            position=i;
+            break;
+        }
+        
+    }
+    return position;
+}
+
