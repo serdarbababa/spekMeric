@@ -108,6 +108,66 @@ int Dugum::addChild(data_tipi data, int option){
 }
 
 
+
+int Dugum::getChildLocation(data_tipi data, int option){
+    bool willBeInserted = true;
+    int insertedChildIndex = 0;
+    
+    if(option ==1){
+        
+        //cocugu var ise
+        if (children->size() >0){
+            //cocugu ekleyecek yeri belirle
+            for (int j = 0; j < children->size(); j++){
+                if (children->at(j)->deger == data){
+                    insertedChildIndex = j;
+                    willBeInserted=false;
+                    break;
+                }
+                else if (children->at(j)->deger > data){
+                    insertedChildIndex =j;
+                    break;
+                }
+                else
+                    insertedChildIndex++;
+            }
+        }
+        else{
+            willBeInserted=true;
+            insertedChildIndex=0;
+        }
+        
+    }
+    else if(option ==2){
+        //cocugu var ise
+        if (children->size() >0){
+            //cocugu ekleyecek yeri belirle
+            for (int j = 0; j < children->size(); j++){
+                if (abs(children->at(j)->deger - data)<= komsuluk){
+                    insertedChildIndex = j;
+                    willBeInserted=false;
+                    break;
+                }
+                else if (children->at(j)->deger > data){
+                    insertedChildIndex =j;
+                    break;
+                }
+                else
+                    insertedChildIndex++;
+            }
+        }
+        else{
+            willBeInserted=true;
+            insertedChildIndex=0;
+        }
+    }
+    if(willBeInserted)
+        return -2;
+    else
+        return insertedChildIndex;
+}
+
+
 int Dugum::buildChild(int id, data_tipi data, int option){
     bool willBeInserted = true;
     int insertedChildIndex = 0;

@@ -48,10 +48,13 @@ data_tipi * Utility::discreteHaarWaveletTransform(data_tipi * inputI, int size){
             output[i] = sum/2;
             output[length + i] = difference/2;
         }
+        
+        /*for(int i = 0 ; i < size; i++)
+            cout << output[i]<<"\t";
+        cout <<endl;
+        */
         if (length == 1) {
-            //cout <<endl;
-            //for(int i = 0 ; i < size; i++)
-            //    cout << output[i]<<"\t";
+            
             return output;
         }
 
@@ -63,6 +66,51 @@ data_tipi * Utility::discreteHaarWaveletTransform(data_tipi * inputI, int size){
     
 	return output;
 }
+
+
+data_tipi * Utility::inverseDiscreteHaarWaveletTransform(data_tipi * inputI, int size){
+    
+    data_tipi *input = new data_tipi[size];
+    data_tipi *output = new data_tipi[size];
+    
+    for(int i = 0 ; i < size; i++){
+        input[i] = inputI[i];
+        //output[i] = inputI[i];
+    }
+    for (int length = 1; length<=size /2; length *= 2) {
+        // length = input.length / 2^n, WITH n INCREASING to log_2(input.length)
+        for (int i = 0; i < length; ++i) {
+            int sum = input[i ] + input[length+i];
+            int difference = input[i ] - input[length+ i ];
+            output[2*i] = sum;//2;
+            output[2*i +1] = difference;//2;
+            
+           
+        }
+        /*cout<< "o"<< "\t";
+        for(int i = 0 ; i < size; i++)
+            cout << output[i]<<"\t";
+        cout <<endl;
+        cout << "i"<< "\t";
+        for(int i = 0 ; i < size; i++)
+            cout << input[i]<<"\t";
+        cout <<endl;
+       */
+        
+        if (length == size) {
+            
+            return output;
+        }
+        
+        //Swap arrays to do next iteration
+        //System.arraycopy(output, 0, input, 0, length << 1);
+        for(int i = 0;i<length*2 ;i++)
+            input[i]=output[i];
+    }
+    
+    return output;
+}
+
 /*
 void Utility::readWav(char * filename){
 	CWave *c = new CWave();	
@@ -309,6 +357,41 @@ int Utility::writeWav(char* filePath ,data_tipi * output, int fs, int  datasize)
     return 0;
 }
 
+int Utility::saveDataToBinary(char* filename, int *data, int dataSize){
+    
+    std::ofstream *fp=new std::ofstream();
+    fp->open(filename, std::ios::binary);
+    
+    if(!fp) {
+        return -1;
+    }
+    int val ;
+    for(int i = 0 ; i < dataSize;i++){
+        val = data[i];
+        fp->write((char*) &val, sizeof(int));
+    }
+    (*fp).close();
+    return 0;
+    
+}
 
-
-
+int Utility::getDataFromBinary(char * filename, int ** data, int *dataSize){
+    FILE* fp = fopen(filename, "rb");
+    
+    if(!fp) {
+        cout << "Cannot open input file.\n";
+        return -1;
+    }
+    *dataSize= getFileSize(fp)/sizeof(int);
+    (*data)=new int[*dataSize];
+    int val;
+    int counter= 0 ;
+    while(!feof(fp))
+    {
+        fread(&val, sizeof(int), 1, fp);
+        (*data)[counter++ ]=val;
+    }
+    fclose(fp);
+    return 0;
+    
+}

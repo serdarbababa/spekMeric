@@ -72,7 +72,7 @@ public:
     //void testWav(char * filename, data_tipi * data, int num_samples, int fs);
     //wavelet transform
 	data_tipi * discreteHaarWaveletTransform(data_tipi * data, int size);
-    
+    data_tipi * inverseDiscreteHaarWaveletTransform(data_tipi * inputI, int size);
     //reads given wav file
 	int readWav(char* filePath ,data_tipi ** output, int *fs, int * datasize);
     void readWavFile(char * filePath);
@@ -82,7 +82,11 @@ public:
     
 	//generates carrier signal
     void generate_carrier_signal(int samples_in_second, int frequency, data_tipi max);
-   
+    //save int array to binary file
+    int saveDataToBinary(char * filename, int * data, int dataSize);
+    
+    //save int array to binary file
+    int getDataFromBinary(char * filename, int ** data, int *dataSize);
     
 public:
     

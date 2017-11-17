@@ -27,6 +27,8 @@ void one_cycle();
 int main(){
     
     Bellek *bellek = new Bellek();
+    
+    
     //testTree();
     //testWaveletTree();
     
@@ -59,40 +61,99 @@ void one_cycle(){
     Bellek *bellek=new Bellek();
     char filename[100];
     
+    int option = 3;
+    
+    /*read wav to tree*/
+    sprintf(filename, "/Users/ser/OneDrive/spectron/data/amy.wav");
+    bellek->agac_wavIleEgit(filename, 32, 32, option);
+    
+    sprintf(filename, "/Users/ser/OneDrive/spectron/data/brian.wav");
+    bellek->agac_wavIleEgit(filename, 32, 32, option);
+    
+    bellek->agac_yaprak_topla();
+    bellek ->agac_kisa_ozetle();
+    
+    sprintf(filename, "/Users/ser/OneDrive/spectron/data/amy.wav");
+    bellek->agac_restoreWav(filename, "/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/brian.wav", 32, 32, option);
     
     /*
     testLearning(bellek);
+    bellek->yaprak_topla();
+    
     
     data_tipi veri[8]={8    ,5,    11,    6,    8,    7,    9,    2};
-    cout << bellek->getBranchId(veri, 8, 1)<<endl;
+    int id =bellek->getBranchId(veri, 8, 2);
+    cout << "yaprak id = "<< id<<endl<<"verisi = " ;
     for(int i =0 ; i < 8;i++)
         printf("%d\t", veri[i]);
     cout << endl<<endl;
     
+    data_tipi *geriGetir;
+    cout <<id<< " icin dal getirme = "<< bellek->getBranch(id, &geriGetir, 8)<<endl;
+    for(int i =0 ; i < 8;i++)
+        printf("%d\t", geriGetir[i]);
+    
+    cout << endl<<endl;
+    
+    id=1;
+    cout <<id<< " icin dal getirme = "<< bellek->getBranch(id, &geriGetir, 8)<<endl;
+    for(int i =0 ; i < 8;i++)
+        printf("%d\t", geriGetir[i]);
+    cout << endl<<endl;
     
     bellek->agac_goster();
     cout <<endl<<endl<<"agac ozeti";
     bellek->agac_kisa_ozetle();
+    /*
     
     
-    bellek->yaprak_topla();
     cout << bellek->getBranchId(veri, 8, 1)<<endl;
     bellek->agac_goster();
     cout <<endl<<endl<<"agac ozeti";
     bellek->agac_kisa_ozetle();
-    */
     
-    /*read wav to tree*/
+    
+    
+    
     /*
-    sprintf(filename, "/Users/ser/OneDrive/spectron/data/amy.wav");
-    bellek->agac_wavIleEgit(filename, 128, 32, 1);
-    bellek->agac_kaydet("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeData.txt");
-    bellek->yaprak_topla();
-    cout <<endl<<endl<<"agac ozeti";
+     
+     sprintf(filename, "/Users/ser/OneDrive/spectron/data/amy.wav");
+    bellek->agac_wavIleEgit(filename, 32, 32, 2);
+    //bellek->agac_kaydet("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeData.txt");
+    
+    cout <<endl<<endl<<"agac ozeti"<<endl;
     bellek->agac_kisa_ozetle();
     
+    int *ids;
+    int count;
+    bellek->agac_wavGetIDs(filename, &ids, &count, 32, 32, 2);
+    cout << "toplam id's " << count<<endl;
+    for(int i = 0 ; i< 10;i++)
+        cout << i<<"\t" << ids[10000+i]<<endl;
+    bellek->yaprak_topla();
     
-    Bellek *bellek1=new Bellek();
+    bellek->agac_wavGetIDs(filename, &ids, &count, 32, 32, 2);
+    cout << "toplam id's " << count<<endl;
+    for(int i = 0 ; i< 10;i++)
+        cout << i<<"\t" << ids[10000+i]<<endl;
+    
+   // bellek->agac_ozetle();
+    bellek->agac_kisa_ozetle();
+    Utility *u = new Utility();
+    u->saveDataToBinary("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeDataIDs.txt", ids, count);
+    
+    int * ids1;
+    int count1;
+    u->getDataFromBinary("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeDataIDs.txt", &ids1, &count1);
+    
+    cout << "elem count = "<< count << "\t" << count1<< endl;
+    for(int i = 0 ; i< 10;i++)
+        cout << i+10000<<"\t" << ids[10000+i]<<"\t"<< ids1[10000+i]<< endl;
+    cout << endl<<endl;
+    
+    
+    
+    //Bellek *bellek1=new Bellek();
     /*restore tree from file *
     cout << endl<<endl<<"restoring tree from file " << bellek1->agac_gerigetir("/Users/ser/OneDrive/git/spekMeric/mericSpek/mericSpek/treeData.txt")<<endl<<endl;
     cout <<endl<<endl<<"agac kisa ozeti";
@@ -137,7 +198,7 @@ void testLearning(Bellek *bellek ){
             veri[i]=(int)(rand())%16;
             printf("%d\t",veri[i]);
         }
-        bellek->agac_egit(veri, depth, 1);
+        bellek->agac_egit(veri, depth, 2);
         printf("\n");
     }
     cout << endl<<endl;
@@ -243,4 +304,31 @@ void testWriteSound(){
     cout << "write = " << u->writeWav(filename,output, fs, datasize)<<endl;
     //u->readWavFile(filename);
     //u->testWav(filename);
+}
+
+
+void testHarr(){
+    data_tipi veri[8]= {6,1,14,2,55,10,2,-10};
+    cout << "input"<<"\t";
+    for(int i = 0 ; i < 8 ; i++)
+        cout << veri[i]<<"\t";
+    cout << endl;
+    
+    data_tipi * sonuc;
+    data_tipi * restore ;
+    Utility* u = new Utility();
+    sonuc = u->discreteHaarWaveletTransform(veri, 8);
+    
+    cout << "transformed"<<"\t";
+    for(int i = 0 ; i < 8 ; i++)
+        cout << sonuc[i]<<"\t";
+    cout << endl;
+    
+    
+    restore = u->inverseDiscreteHaarWaveletTransform(sonuc, 8);
+    cout << "restored " <<"\t";
+    for(int i = 0 ; i < 8 ; i++)
+        cout << restore[i]<<"\t";
+    cout << endl;
+    
 }

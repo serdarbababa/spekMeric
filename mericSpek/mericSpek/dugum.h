@@ -31,6 +31,8 @@ public:
     Dugum * getParent();
     
     int addChild(data_tipi, int option);
+    int getChildLocation(data_tipi deger, int option);
+    
     int buildChild(int id, data_tipi, int option);
     
     void setIDMax(int id);

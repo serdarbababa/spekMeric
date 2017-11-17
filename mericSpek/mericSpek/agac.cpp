@@ -17,7 +17,8 @@ void Agac::agacYarat(){
  */
 
 void Agac::dalEkle(data_tipi * veriler, int derinligi, int option){
-	if(root==NULL){
+	
+    if(root==NULL){
 		root = new Dugum(-9999);
 	}	
 	dugumEkle(veriler, derinligi,this->root, option);
@@ -33,43 +34,16 @@ void Agac::dugumEkle(data_tipi *veriler, int derinlik, Dugum *nod, int option){
 	else
 		dugumEkle(veriler+1,derinlik-1,nod->getChildAt(insertedChildIndex), option);
 }
-/*
-void Agac::dugumEkleFarkli(data_tipi *veriler, int derinlik, dugum *nod){
-	
-	bool willBeInserted = true;
-	int insertedChildIndex = -1;
 
-	if (nod->children->size() >0){		
-		for (int j = 0; j < nod->children->size(); j++){
-			if ( abs( veriler[0]-nod->children->at(j)->deger) <neighbour ){
-				insertedChildIndex = j;
-				willBeInserted=false;
-				//cout << "dugum atlandi "<<endl;
-
-			}
-			else if (nod->children->at(j)->deger > veriler[0]  && willBeInserted ){
-				
-				dugum * n = new dugum(veriler[0]);				
-				nod->children->insert( nod->children->begin() + j,n ); //->insert(it + i, n);
-				n->parent = nod;				
-				insertedChildIndex =j;
-
-				break;
-
-			}
-		}
-	}
-	if(insertedChildIndex < 0 && willBeInserted){
-		nod->addChild(veriler[0]);
-		insertedChildIndex = (int)nod->children->size()-1;
-	}
-	//cout << insertedChildIndex << endl;
-	if(derinlik ==1)
-		return;
-	else
-		dugumEkleFarkli(veriler+1,derinlik-1,nod->children->at(insertedChildIndex));
+int Agac::dalGetir(int yaprakId, data_tipi **deger , int derinlik){
+    (*deger)=new data_tipi[derinlik];
+    Dugum *d = yapraklar->at(yaprakId);
+    for(int i =derinlik- 1;i >= 0 && d!=NULL ; i--){
+        (*deger)[i]=d->getDeger();
+        d=d->getParent();
+    }
+    return 0;
 }
-*/
 
 void Agac::Postorder(Dugum * nod)
 {
@@ -378,7 +352,7 @@ int Agac::openB(char * filename){
 
 void Agac::registerLeafs(){
     Agac::leaf_id_counter=1;
-    this->leafs = new vector<Dugum *>;
+    this->yapraklar = new vector<Dugum *>;
     doRegisterLeaf(this->root);
 }
 
@@ -387,12 +361,14 @@ void Agac::doRegisterLeaf(Dugum *nod){
         if(nod->getChildrenCount()==0){
             
             nod->setID( Agac::leaf_id_counter++);
+            this->yapraklar->insert(yapraklar->end(),nod);
             //Agac::leaf_id_counter= Agac::leaf_id_counter+1;
         }
         else{
             nod->setID( -1);
-            for (int i = 0; i < nod->getChildrenCount(); i++)
+            for (int i = 0; i < nod->getChildrenCount(); i++){
                 doRegisterLeaf(nod->getChildAt(i));
+            }
         }
         //cout << nod->getDeger() << endl;
         
@@ -401,7 +377,7 @@ void Agac::doRegisterLeaf(Dugum *nod){
 }
 
 
-int Agac::getLeafId(data_tipi *veriler, int derinlik, int option){
+int Agac::dalIdGetir(data_tipi *veriler, int derinlik, int option){
     if(root==NULL){
         return -999;
     }
@@ -410,16 +386,20 @@ int Agac::getLeafId(data_tipi *veriler, int derinlik, int option){
 
 
 int Agac::dalBul(data_tipi *veriler, int derinlik, Dugum *nod, int option){
-    int insertedChildIndex = nod->addChild(veriler[0], option);
-    //cout << insertedChildIndex << endl;
+    int childIndex = nod->getChildLocation(veriler[0], option);
+    if(childIndex == -2)
+        for(int i = 0 ; i < derinlik; i++)
+            cout << veriler[i]<<"\t";
+        //cout << childIndex << endl;
+    nod->getChildLocation(veriler[0], option);
     if(derinlik ==1){
-        nod->getChildAt(insertedChildIndex)->visited();
-        int temp = nod->getChildAt(insertedChildIndex)->getId();
+        nod->getChildAt(childIndex)->visited();
+        int temp = nod->getChildAt(childIndex)->getId();
         return temp;
         
     }
     else{
-        int temp =  dalBul(veriler+1,derinlik-1,nod->getChildAt(insertedChildIndex), option);
+        int temp =  dalBul(veriler+1,derinlik-1,nod->getChildAt(childIndex), option);
         return temp;
     }
 }

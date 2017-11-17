@@ -40,7 +40,10 @@ public:
     //keeping track of the leafs
     void registerLeafs();
     
-    int getLeafId(data_tipi * veriler, int derinlik, int option);
+    int dalIdGetir(data_tipi * veriler, int derinlik, int option);
+    
+    /* dal getir */
+    int dalGetir(int yaprakId, data_tipi **deger,int derinlik);
     
     /*  */
     void brief_summary(){
@@ -53,9 +56,21 @@ public:
         for(int i=0;i<root->getChildrenCount();i++)
             cout<<"cocuk "<<i<< ", id ="<< root->getChildAt(i)->getId()<<", deger="<< root->getChildAt(i)->getDeger() <<", count ="<< root->getChildAt(i)->getUzerindenGecme()<<endl;
     }
+    
+    /*void setAgacDepth(int depth){
+        this->depth = depth;
+    }
+    
+    int getAgacDepth(){
+        return this->depth;
+    }
+    */
+    
 private:
 	Dugum * root;
-    vector<Dugum *> *leafs;
+    vector<Dugum *> *yapraklar;
+    //int depth;
+    
     
     /*dal eklemek icin dugum ekler*/
     void dugumEkle(data_tipi *deger,int derinlik, Dugum * nod, int option);
